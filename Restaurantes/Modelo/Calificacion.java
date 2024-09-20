@@ -55,7 +55,18 @@ public class Calificacion {
         public void setComentario(String comentario) {
             this.comentario = comentario;
         }
-//-----Metodos---------------------------------------------------------------------------------------
+
+        public double getCalificacion() {
+            return puntuacion;
+        }
+
+        public double getValor() {
+            return puntuacion;
+        }
+        
+
+//----------------------------------METODOS----------------------------------------------------------
+
     //actualiza la puntuacion y comentario de la calificacion
     public void actualizarCalificacion(int puntuacion, String comentario) {
         this.puntuacion = puntuacion;
@@ -87,6 +98,12 @@ public class Calificacion {
         return id == that.id;
     }
 
+    //calcular el hashcode de la calificacion basado en el id (unico)
+        /*El hashcode de un objeto es un número entero que se utiliza para identificar de forma única un objeto en una colección.
+        En este caso, el hashcode de una calificación se basa en el id de la calificación, que se supone que es único para cada calificación.
+        Por lo tanto, dos calificaciones con el mismo id tendrán el mismo hashcode, lo que es útil para comparar y buscar calificaciones en colecciones 
+        como conjuntos y mapas.
+        */
     @Override
     public int hashCode() {
         return Integer.hashCode(id);

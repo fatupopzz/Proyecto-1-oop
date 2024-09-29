@@ -1,5 +1,5 @@
 
-package Restaurantes.Modelo;
+
 //---IMPORTS---------------------------------------------
 import java.util.Date;
 

@@ -10,6 +10,3 @@ Juanjo
 
 -UI
 
-Ricardo
-
--documentacion

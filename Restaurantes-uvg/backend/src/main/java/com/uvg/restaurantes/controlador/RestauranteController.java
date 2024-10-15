@@ -1,12 +1,7 @@
-package restaurantes.uvg.backend.src.main.java.controladores;
+package com.uvg.restaurantes.controller;
 
-import java.util.List;
-
-/**
- * Controlador REST para gestionar restaurantes.
- */
 @RestController
-@RequestMapping("/restaurantes")
+@RequestMapping("/api/restaurantes")
 public class RestauranteController {
 
     @Autowired
@@ -19,50 +14,39 @@ public class RestauranteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Restaurante> obtenerRestaurantePorId(@PathVariable int id) {
-        Restaurante restaurante = restauranteService.obtenerRestaurantePorId(id);
-        if (restaurante != null) {
-            return ResponseEntity.ok(restaurante);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Restaurante> obtenerRestaurante(@PathVariable Long id) {
+        return restauranteService.obtenerRestaurante(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping
-    public ResponseEntity<List<Restaurante>> listarRestaurantes() {
-        List<Restaurante> restaurantes = restauranteService.listarRestaurantes();
-        return ResponseEntity.ok(restaurantes);
+    public List<Restaurante> listarRestaurantes() {
+        return restauranteService.listarRestaurantes();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Restaurante> actualizarRestaurante(@PathVariable int id, @RequestBody Restaurante restaurante) {
-        Restaurante restauranteActualizado = restauranteService.actualizarRestaurante(id, restaurante);
-        if (restauranteActualizado != null) {
-            return ResponseEntity.ok(restauranteActualizado);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Restaurante> actualizarRestaurante(@PathVariable Long id, @RequestBody Restaurante restaurante) {
+        return restauranteService.actualizarRestaurante(id, restaurante)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarRestaurante(@PathVariable int id) {
-        boolean eliminado = restauranteService.eliminarRestaurante(id);
-        if (eliminado) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
+    public ResponseEntity<Void> eliminarRestaurante(@PathVariable Long id) {
+        if (restauranteService.eliminarRestaurante(id)) {
+            return ResponseEntity.ok().build();
         }
+        return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/buscar")
-    public ResponseEntity<List<Restaurante>> buscarRestaurantesPorNombre(@RequestParam String nombre) {
-        List<Restaurante> restaurantes = restauranteService.buscarRestaurantesPorNombre(nombre);
-        return ResponseEntity.ok(restaurantes);
+    public List<Restaurante> buscarRestaurantes(@RequestParam String nombre) {
+        return restauranteService.buscarRestaurantesPorNombre(nombre);
     }
 
-    @GetMapping("/mejor-calificados")
-    public ResponseEntity<List<Restaurante>> obtenerMejoresRestaurantes() {
-        List<Restaurante> restaurantes = restauranteService.obtenerMejoresRestaurantes();
-        return ResponseEntity.ok(restaurantes);
+    @GetMapping("/top-rated")
+    public List<Restaurante> obtenerRestaurantesMejorCalificados() {
+        return restauranteService.obtenerRestaurantesMejorCalificados();
     }
 }

@@ -1,22 +1,22 @@
-
-
+//---PACKAGE---------------------------------------------
+package com.uvg.restaurantes.modelo;
 //---IMPORTS---------------------------------------------
 import java.util.Date;
 
 //---CLASE-----------------------------------------------
-public class Usuario{
+public class Usuario {
     private int id;
     private String nombre;
     private String email;
     private String contrasena;
-    private Date fecharegistro;
+    private Date fechaRegistro;
     private boolean esAdministrador;
 //-----CONSTRUCTOR-----------------------------------------------------------------------------------
-public Usuario(String nombre, String email, String contraseña) {
+    public Usuario(String nombre, String email, String contrasena) {
         this.nombre = nombre;
         this.email = email;
-        this.contrasena = contraseña;
-        this.fecharegistro = new Date();
+        this.contrasena = contrasena;
+        this.fechaRegistro = new Date();
         this.esAdministrador = false;
     }
 //-----GETTERS Y SETTERS-----------------------------------------------------------------------------
@@ -44,11 +44,11 @@ public Usuario(String nombre, String email, String contraseña) {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-    public Date getFecharegistro() {
-        return fecharegistro;
+    public Date getFechaRegistro() {
+        return fechaRegistro;
     }
-    public void setFecharegistro(Date fecharegistro) {
-        this.fecharegistro = fecharegistro;
+    public void setFechaRegistro(Date fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
     }
     public boolean isEsAdministrador() {
         return esAdministrador;
@@ -63,6 +63,6 @@ public Usuario(String nombre, String email, String contraseña) {
     }
     //devolver los datos menos la contraseña
     public String toString(){
-        return "Usuario [id=" + id + ", nombre=" + nombre + ", email=" + email + ", fecharegistro=" + fecharegistro + ", esAdministrador=" + esAdministrador + "]";
+        return "Usuario [id=" + id + ", nombre=" + nombre + ", email=" + email + ", fechaRegistro=" + fechaRegistro + ", esAdministrador=" + esAdministrador + "]";
     }
 }

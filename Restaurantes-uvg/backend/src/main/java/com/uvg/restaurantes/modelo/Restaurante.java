@@ -1,6 +1,3 @@
-//---PACKAGE---------------------------------------------
-package com.uvg.restaurantes.modelo;
-//---IMPORTS---------------------------------------------
 import java.util.ArrayList;
 import java.util.List;
 

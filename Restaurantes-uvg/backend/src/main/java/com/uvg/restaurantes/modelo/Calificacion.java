@@ -1,7 +1,10 @@
 
-//---IMPORTS---------------------------------------------
+//---PACKAGE---------------------------------------------
+package com.uvg.restaurantes.modelo;
 import java.util.Date;
 import java.util.List;
+
+
 
 //---CLASE-----------------------------------------------
 public class Calificacion {
